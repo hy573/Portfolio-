@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TEAM CRYPTIC — Esports Organisation</title>
+<meta name="description" content="TEAM CRYPTIC — professional Free Fire esports organisation. Rosters, achievements, recruitment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="/_blob/ab124d68dc2b80b77935ee8723596e02">
+<style>
+:root{
+  --bg:#0a0a0c; --bg2:#111113; --surface:#17171a; --line:#2a2a2e;
+  --crimson:#7a0c17; --red:#c81e2c; --red-bright:#e8303f;
+  --white:#f3f1ee; --mute:#8d8c92; --mute2:#5c5b61;
+  color-scheme: dark;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top: calc(72px + env(safe-area-inset-top,0px));}
+body{
+  background:var(--bg); color:var(--white);
+  font-family:'Inter',sans-serif; line-height:1.5;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  overflow-x:hidden;
+}
+.display{font-family:'Bebas Neue',sans-serif; letter-spacing:0.01em;}
+img{max-width:100%;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+section{padding:110px 0;}
+@media(max-width:700px){section{padding:72px 0;}}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,12,.85);}
+
+/* NAV */
+header{
+  position:fixed; top:env(safe-area-inset-top,0px); left:0; right:0; z-index:30;
+  background:rgba(10,10,12,.78); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+nav.wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+.logo{display:flex; align-items:center; gap:10px; font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.04em;}
+.logo .mark{width:36px; height:36px; border-radius:50%; object-fit:cover;}
+.navlinks{display:flex; gap:34px; font-size:14px; font-weight:600; color:var(--mute);}
+.navlinks a:hover{color:var(--white);}
+.join-btn{
+  background:var(--red); color:var(--white); font-weight:700; font-size:13px;
+  padding:11px 22px; border-radius:3px; letter-spacing:0.03em;
+  box-shadow:0 0 0 1px rgba(232,48,63,.4);
+  transition:background .2s, box-shadow .2s;
+}
+.join-btn:hover{background:var(--red-bright); box-shadow:0 0 22px rgba(232,48,63,.55);}
+.burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+.burger span{width:24px; height:2px; background:var(--white);}
+#mobileNav{display:none; flex-direction:column; gap:0; background:var(--bg2); border-top:1px solid var(--line);}
+#mobileNav a{padding:16px 24px; border-bottom:1px solid var(--line); font-weight:600; color:var(--mute);}
+#mobileNav.open{display:flex;}
+@media(max-width:860px){
+  .navlinks, header .join-btn{display:none;}
+  .burger{display:flex;}
+}
+
+/* HERO */
+.hero{
+  position:relative; min-height:92vh; display:flex; align-items:center;
+  padding-top:140px;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% 10%, rgba(200,30,44,.35), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(122,12,23,.3), transparent 60%),
+    var(--bg);
+}
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(transparent, transparent 2px, rgba(255,255,255,.012) 3px);
+}
+.eyebrow{color:var(--red-bright); font-weight:700; font-size:13px; letter-spacing:.12em; margin-bottom:18px;}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,9vw,112px); line-height:0.92;
+  max-width:14ch;
+}
+.hero h1 .accent{color:var(--red-bright);}
+.hero .sub{
+  margin-top:22px; font-size:clamp(16px,2vw,19px); color:var(--mute); max-width:46ch; font-weight:500;
+}
+.hero p.lede{margin-top:20px; max-width:56ch; color:var(--mute2); font-size:15px;}
+.hero-ctas{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+.btn-primary{background:var(--red); color:var(--white); padding:15px 28px; font-weight:700; font-size:14px; border-radius:3px; box-shadow:0 0 0 1px rgba(232,48,63,.4); transition:.2s;}
+.btn-primary:hover{background:var(--red-bright); box-shadow:0 0 26px rgba(232,48,63,.5);}
+.btn-ghost{border:1px solid var(--line); color:var(--white); padding:15px 28px; font-weight:700; font-size:14px; border-radius:3px; transition:.2s;}
+.btn-ghost:hover{border-color:var(--red-bright); color:var(--red-bright);}
+
+/* shared */
+.kicker{color:var(--red-bright); font-weight:700; font-size:13px; letter-spacing:.1em; margin-bottom:14px;}
+h2.display{font-size:clamp(34px,5vw,56px); max-width:16ch; margin-bottom:16px;}
+.section-sub{color:var(--mute); max-width:60ch; font-size:15px; margin-bottom:54px;}
+.divider{height:1px; background:var(--line); width:100%;}
+
+/* ABOUT */
+.about-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:60px;}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+.values{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
+.value-row{display:flex; justify-content:space-between; align-items:baseline; padding:20px 0; border-bottom:1px solid var(--line);}
+.value-row .name{font-weight:700; font-size:16px;}
+.value-row .desc{color:var(--mute); font-size:14px; max-width:28ch; text-align:right;}
+@media(max-width:560px){.value-row{flex-direction:column; gap:6px;} .value-row .desc{text-align:left;}}
+
+/* RECRUITMENT */
+.rec-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:46px;}
+.status-pill{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.05em; padding:7px 14px; border-radius:30px; border:1px solid var(--line);}
+.status-pill.open{color:#3ddc84; border-color:rgba(61,220,132,.3);}
+.status-pill.closed{color:var(--mute2);}
+.dot{width:7px; height:7px; border-radius:50%; background:currentColor;}
+.role-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+.role-card{background:var(--bg2); padding:28px 26px; display:flex; flex-direction:column; gap:14px; transition:background .2s;}
+.role-card:hover{background:var(--surface);}
+.role-card .role-name{font-family:'Bebas Neue'; font-size:26px; letter-spacing:.01em;}
+.role-card ul{list-style:none; color:var(--mute); font-size:13.5px; display:flex; flex-direction:column; gap:6px;}
+.role-card ul li::before{content:"— "; color:var(--mute2);}
+.role-card .apply{margin-top:auto; font-weight:700; font-size:13px; color:var(--red-bright); display:inline-flex; align-items:center; gap:6px; cursor:pointer;}
+.role-card .apply:hover{color:var(--white);}
+
+.apply-form{margin-top:60px; background:var(--bg2); border:1px solid var(--line); padding:44px; border-radius:4px;}
+.apply-form h3{font-family:'Bebas Neue'; font-size:28px; margin-bottom:8px;}
+.apply-form .note{color:var(--mute); font-size:13.5px; margin-bottom:28px; max-width:60ch;}
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+@media(max-width:620px){.form-grid{grid-template-columns:1fr;}}
+.field{display:flex; flex-direction:column; gap:7px;}
+.field label{font-size:12px; font-weight:700; color:var(--mute); letter-spacing:.03em;}
+.field input, .field select, .field textarea{
+  background:var(--bg); border:1px solid var(--line); color:var(--white); padding:12px 14px; border-radius:3px; font-size:14px; font-family:inherit;
+}
+.field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--red-bright); outline-offset:1px; border-color:var(--red-bright);}
+.field.full{grid-column:1/-1;}
+.apply-form button{margin-top:26px;}
+#formMsg{margin-top:16px; font-size:13.5px; color:var(--mute);}
+
+/* TEAMS */
+.team-block{margin-bottom:70px;}
+.team-top{display:flex; align-items:center; gap:18px; margin-bottom:28px;}
+.team-logo{width:50px; height:50px; border-radius:50%; background:linear-gradient(135deg,var(--crimson),#1a1a1d); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue'; font-size:20px; border:1px solid var(--line);}
+.team-meta h3{font-family:'Bebas Neue'; font-size:28px;}
+.team-meta p{color:var(--mute); font-size:13px;}
+.roster-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px;}
+.player-card{background:var(--bg2); border:1px solid var(--line); padding:16px; border-radius:4px; transition:transform .18s, border-color .18s;}
+.player-card:hover{transform:translateY(-3px); border-color:var(--red-bright);}
+.player-avatar{width:100%; aspect-ratio:1; background:linear-gradient(160deg,#1d1d20,#0c0c0e); border-radius:3px; margin-bottom:12px; display:flex; align-items:center; justify-content:center; color:var(--mute2); font-family:'Bebas Neue'; font-size:30px;}
+.player-card .pname{font-weight:700; font-size:14.5px;}
+.player-card .prole{color:var(--red-bright); font-size:11.5px; font-weight:700; letter-spacing:.04em; margin-top:2px;}
+.player-card.sub .player-avatar{opacity:.55;}
+.player-card.sub{opacity:.75;}
+
+/* ACHIEVEMENTS */
+.ach-list{display:flex; flex-direction:column;}
+.ach-row{display:grid; grid-template-columns:90px 1fr auto; gap:24px; align-items:center; padding:24px 0; border-top:1px solid var(--line);}
+.ach-list .ach-row:last-child{border-bottom:1px solid var(--line);}
+.ach-row .trophy{width:46px; height:46px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--red-bright), var(--crimson) 70%); display:flex; align-items:center; justify-content:center; font-weight:800; color:var(--white); font-size:13px;}
+.ach-row .info .title{font-weight:700; font-size:16px;}
+.ach-row .info .meta{color:var(--mute); font-size:13px; margin-top:3px;}
+.ach-row .pos{font-family:'Bebas Neue'; font-size:24px; color:var(--red-bright); text-align:right; white-space:nowrap;}
+@media(max-width:560px){.ach-row{grid-template-columns:50px 1fr; }.ach-row .pos{grid-column:2; text-align:left; font-size:18px;}}
+.demo-note{margin-top:24px; font-size:12.5px; color:var(--mute2); font-style:italic;}
+
+/* CONTACT */
+.contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:40px;}
+.contact-card{background:var(--bg2); padding:30px 26px;}
+.contact-card .label{color:var(--mute); font-size:12px; font-weight:700; letter-spacing:.05em; margin-bottom:8px;}
+.contact-card .val{font-weight:700; font-size:17px;}
+.contact-card a.val:hover{color:var(--red-bright);}
+.insta-link{display:inline-flex; align-items:center; gap:8px;}
+.insta-sub{margin-top:8px; font-size:12.5px; color:var(--mute); font-weight:500;}
+.insta-sub a{color:var(--red-bright); font-weight:700;}
+.insta-sub a:hover{color:var(--white);}
+.insta-btn{
+  display:inline-flex; align-items:center; gap:10px; margin-top:28px;
+  border:1px solid var(--line); color:var(--white); padding:14px 24px; border-radius:3px; font-weight:700; font-size:13px; letter-spacing:.03em;
+  transition:border-color .2s, color .2s, transform .15s;
+}
+.insta-btn:hover{border-color:var(--red-bright); color:var(--red-bright);}
+.insta-btn:active{transform:scale(0.97);}
+.foot-social a:active{transform:scale(0.92);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line); padding:60px 0 40px;}
+.foot-top{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; margin-bottom:40px;}
+.foot-links{display:flex; gap:26px; flex-wrap:wrap; font-size:13.5px; color:var(--mute); font-weight:600;}
+.foot-links a:hover{color:var(--white);}
+.foot-social{display:flex; gap:16px;}
+.foot-social a{width:36px; height:36px; border:1px solid var(--line); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--mute);}
+.foot-social a:hover{color:var(--red-bright); border-color:var(--red-bright);}
+.tagline{font-family:'Bebas Neue'; font-size:clamp(22px,3.4vw,32px); color:var(--white); margin-bottom:18px;}
+.foot-bottom{display:flex; justify-content:space-between; color:var(--mute2); font-size:12.5px; flex-wrap:wrap; gap:10px; padding-top:24px; border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="logo"><img class="mark" src="/_blob/ab124d68dc2b80b77935ee8723596e02" alt="Team Cryptic logo">TEAM CRYPTIC</a>
+    <div class="navlinks">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT US</a>
+      <a href="#recruitment">RECRUITMENT</a>
+      <a href="#teams">TEAMS & LINEUPS</a>
+      <a href="#achievements">ACHIEVEMENTS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <a href="#recruitment" class="join-btn">JOIN US</a>
+    <button class="burger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div id="mobileNav">
+    <a href="#home" onclick="document.getElementById('mobileNav').classList.remove('open')">HOME</a>
+    <a href="#about" onclick="document.getElementById('mobileNav').classList.remove('open')">ABOUT US</a>
+    <a href="#recruitment" onclick="document.getElementById('mobileNav').classList.remove('open')">RECRUITMENT</a>
+    <a href="#teams" onclick="document.getElementById('mobileNav').classList.remove('open')">TEAMS & LINEUPS</a>
+    <a href="#achievements" onclick="document.getElementById('mobileNav').classList.remove('open')">ACHIEVEMENTS</a>
+    <a href="#contact" onclick="document.getElementById('mobileNav').classList.remove('open')">CONTACT</a>
+    <a href="https://www.instagram.com/team.crypti.c?xtok=MWZ1NzBvc3J1ejNrZA==" target="_blank" rel="noopener" style="color:var(--red-bright);">INSTAGRAM ↗</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="eyebrow">FREE FIRE · PROFESSIONAL ESPORTS ORGANISATION</div>
+    <h1 class="display">WELCOME TO <span class="accent">THE DARK SIDE.</span></h1>
+    <p class="sub">WE DON'T FOLLOW THE META. WE CREATE IT.</p>
+    <p class="lede">TEAM CRYPTIC is built on discipline, precision and an unwillingness to settle. We scout relentless competitors, train them into a real roster, and send them out to take tournaments apart.</p>
+    <div class="hero-ctas">
+      <a href="#about" class="btn-primary">Explore Our Organisation</a>
+      <a href="#recruitment" class="btn-ghost">Join The Roster</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="kicker">ABOUT US</div>
+    <h2 class="display">More than an organisation.</h2>
+    <div class="about-grid">
+      <div>
+        <p style="color:var(--mute); font-size:15.5px; margin-bottom:20px;">TEAM CRYPTIC is an ambitious Free Fire esports organisation built around competitive excellence and player development. We treat the game like a craft — every scrim, every rotation, every final circle is practice for the moment it actually matters.</p>
+        <p style="color:var(--mute); font-size:15.5px;">Our mission is simple: find players with raw instinct, give them structure, and put them on stage. Our vision is to become a name that opponents respect before the match even loads.</p>
+      </div>
+      <div class="values">
+        <div class="value-row"><span class="name">Competitive excellence</span><span class="desc">Performance measured in results, not noise.</span></div>
+        <div class="value-row"><span class="name">Player development</span><span class="desc">Coaching, VOD review, structured scrim blocks.</span></div>
+        <div class="value-row"><span class="name">Teamwork</span><span class="desc">The roster wins or loses as one unit.</span></div>
+        <div class="value-row"><span class="name">Discipline</span><span class="desc">Attendance, prep and conduct are non-negotiable.</span></div>
+        <div class="value-row"><span class="name">Community</span><span class="desc">A space built for players who take this seriously.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recruitment" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="rec-head">
+      <div>
+        <div class="kicker">JOIN TEAM CRYPTIC</div>
+        <h2 class="display">Your next chapter starts here.</h2>
+      </div>
+      <span class="status-pill open"><span class="dot"></span>RECRUITMENT OPEN</span>
+    </div>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name">Sniper</div>
+        <ul><li>Consistent long-range accuracy</li><li>Calm under pressure in late zones</li><li>Minimum 2 seasons competitive experience</li></ul>
+        <span class="status-pill open" style="width:fit-content;"><span class="dot"></span>OPEN</span>
+        <span class="apply" onclick="document.getElementById('apply').scrollIntoView()">Apply Now →</span>
+      </div>
+      <div class="role-card">
+        <div class="role-name">IGL</div>
+        <ul><li>Strong map and rotation IQ</li><li>Clear in-call communication</li><li>Proven shot-caller history</li></ul>
+        <span class="status-pill open" style="width:fit-content;"><span class="dot"></span>OPEN</span>
+        <span class="apply" onclick="document.getElementById('apply').scrollIntoView()">Apply Now →</span>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Rusher</div>
+        <ul><li>Aggressive entry fragging</li><li>Fast reaction time</li><li>Comfortable in close-quarters duels</li></ul>
+        <span class="status-pill open" style="width:fit-content;"><span class="dot"></span>OPEN</span>
+        <span class="apply" onclick="document.getElementById('apply').scrollIntoView()">Apply Now →</span>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Support</div>
+        <ul><li>Utility and revive timing</li><li>Map awareness for the squad</li><li>Team-first mentality</li></ul>
+        <span class="status-pill closed" style="width:fit-content;"><span class="dot"></span>CLOSED</span>
+        <span class="apply" style="color:var(--mute2); cursor:default;">Waitlist only</span>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Secondary Rusher</div>
+        <ul><li>Flex entry and trade fragging</li><li>Adaptable loadouts</li><li>Reliable scrim attendance</li></ul>
+        <span class="status-pill open" style="width:fit-content;"><span class="dot"></span>OPEN</span>
+        <span class="apply" onclick="document.getElementById('apply').scrollIntoView()">Apply Now →</span>
+      </div>
+    </div>
+
+    <form class="apply-form" id="apply" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <h3>Player Application</h3>
+      <p class="note">Replace the form's <code>action</code> URL with your own Formspree (or similar) endpoint before going live — submissions aren't stored anywhere until that's connected.</p>
+      <div class="form-grid">
+        <div class="field"><label for="pname">Player name</label><input id="pname" name="player_name" type="text" required></div>
+        <div class="field"><label for="ign">In-game name</label><input id="ign" name="ign" type="text" required></div>
+        <div class="field"><label for="uid">UID</label><input id="uid" name="uid" type="text" required></div>
+        <div class="field"><label for="age">Age</label><input id="age" name="age" type="number" min="13" max="99" required></div>
+        <div class="field"><label for="role">Main role</label>
+          <select id="role" name="main_role" required>
+            <option value="">Select a role</option>
+            <option>Sniper</option><option>IGL</option><option>Rusher</option><option>Support</option><option>Secondary Rusher</option>
+          </select>
+        </div>
+        <div class="field"><label for="prev">Previous team</label><input id="prev" name="previous_team" type="text"></div>
+        <div class="field full"><label for="exp">Experience</label><textarea id="exp" name="experience" rows="3" placeholder="Tournaments played, achievements, server rank..."></textarea></div>
+        <div class="field"><label for="contact">Contact information</label><input id="contact" name="contact" type="text" placeholder="Discord / email / phone" required></div>
+        <div class="field"><label for="video">Gameplay / trial video link</label><input id="video" name="video_link" type="url" placeholder="https://"></div>
+      </div>
+      <button type="submit" class="btn-primary">Submit Application</button>
+      <div id="formMsg"></div>
+    </form>
+  </div>
+</section>
+
+<section id="teams">
+  <div class="wrap">
+    <div class="kicker">TEAMS & LINEUPS</div>
+    <h2 class="display">Our warriors. Our legacy.</h2>
+    <p class="section-sub">Placeholder rosters below — swap in real player names, roles and photos as they're confirmed.</p>
+
+    <div class="team-block">
+      <div class="team-top">
+        <div class="team-logo">CR</div>
+        <div class="team-meta"><h3>Cryptic Main</h3><p>Free Fire · Battle Royale Division</p></div>
+      </div>
+      <div class="roster-grid">
+        <div class="player-card"><div class="player-avatar">C1</div><div class="pname">Player One</div><div class="prole">IGL · Captain</div></div>
+        <div class="player-card"><div class="player-avatar">C2</div><div class="pname">Player Two</div><div class="prole">Sniper</div></div>
+        <div class="player-card"><div class="player-avatar">C3</div><div class="pname">Player Three</div><div class="prole">Rusher</div></div>
+        <div class="player-card"><div class="player-avatar">C4</div><div class="pname">Player Four</div><div class="prole">Support</div></div>
+        <div class="player-card sub"><div class="player-avatar">S1</div><div class="pname">Sub One</div><div class="prole">Substitute</div></div>
+        <div class="player-card sub"><div class="player-avatar">S2</div><div class="pname">Sub Two</div><div class="prole">Substitute</div></div>
+      </div>
+    </div>
+
+    <div class="team-block">
+      <div class="team-top">
+        <div class="team-logo">CA</div>
+        <div class="team-meta"><h3>Cryptic Academy</h3><p>Free Fire · Development Roster</p></div>
+      </div>
+      <div class="roster-grid">
+        <div class="player-card"><div class="player-avatar">A1</div><div class="pname">Academy IGL</div><div class="prole">IGL · Captain</div></div>
+        <div class="player-card"><div class="player-avatar">A2</div><div class="pname">Academy Player</div><div class="prole">Secondary Rusher</div></div>
+        <div class="player-card"><div class="player-avatar">A3</div><div class="pname">Academy Player</div><div class="prole">Sniper</div></div>
+        <div class="player-card"><div class="player-avatar">A4</div><div class="pname">Academy Player</div><div class="prole">Support</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="kicker">BUILT THROUGH VICTORY</div>
+    <h2 class="display">Built through victory.</h2>
+    <div class="ach-list">
+      <div class="ach-row"><div class="trophy">1st</div><div class="info"><div class="title">[Demo] Regional Showdown</div><div class="meta">Cryptic Main · March 2026</div></div><div class="pos">CHAMPION</div></div>
+      <div class="ach-row"><div class="trophy">MVP</div><div class="info"><div class="title">[Demo] Winter Clash Series</div><div class="meta">Player One · January 2026</div></div><div class="pos">MVP AWARD</div></div>
+      <div class="ach-row"><div class="trophy">3rd</div><div class="info"><div class="title">[Demo] Open Qualifier Cup</div><div class="meta">Cryptic Academy · November 2025</div></div><div class="pos">3RD PLACE</div></div>
+      <div class="ach-row"><div class="trophy">2nd</div><div class="info"><div class="title">[Demo] National Invitational</div><div class="meta">Cryptic Main · August 2025</div></div><div class="pos">RUNNER-UP</div></div>
+    </div>
+    <p class="demo-note">All results above are labelled demo content — replace with verified tournament history before publishing.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="kicker">CONTACT</div>
+    <h2 class="display">Reach the organisation.</h2>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="label">INSTAGRAM</div><a class="val insta-link" href="https://www.instagram.com/team.crypti.c?xtok=MWZ1NzBvc3J1ejNrZA==" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@team.crypti.c</a></div>
+      <div class="contact-card"><div class="label">YOUTUBE</div><a class="val" href="https://youtube.com/@teamcryptic" target="_blank" rel="noopener">Team Cryptic</a></div>
+      <div class="contact-card"><div class="label">DISCORD</div><a class="val" href="https://discord.gg/teamcryptic" target="_blank" rel="noopener">discord.gg/teamcryptic</a></div>
+      <div class="contact-card"><div class="label">BUSINESS ENQUIRIES</div><a class="val" href="mailto:business@teamcryptic.gg">business@teamcryptic.gg</a><div class="insta-sub">or DM <a href="https://www.instagram.com/team.crypti.c?xtok=MWZ1NzBvc3J1ejNrZA==" target="_blank" rel="noopener">@team.crypti.c</a> on Instagram</div></div>
+      <div class="contact-card"><div class="label">RECRUITMENT ENQUIRIES</div><a class="val" href="mailto:recruit@teamcryptic.gg">recruit@teamcryptic.gg</a><div class="insta-sub">or DM <a href="https://www.instagram.com/team.crypti.c?xtok=MWZ1NzBvc3J1ejNrZA==" target="_blank" rel="noopener">@team.crypti.c</a> on Instagram</div></div>
+    </div>
+    <a class="insta-btn" href="https://www.instagram.com/team.crypti.c?xtok=MWZ1NzBvc3J1ejNrZA==" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>FOLLOW US ON INSTAGRAM</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="#home" class="logo"><img class="mark" src="/_blob/ab124d68dc2b80b77935ee8723596e02" alt="Team Cryptic logo">TEAM CRYPTIC</a>
+      <div class="foot-links">
+        <a href="#about">About</a><a href="#recruitment">Recruitment</a><a href="#teams">Teams</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+      </div>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/team.crypti.c?xtok=MWZ1NzBvc3J1ejNrZA==" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://youtube.com/@teamcryptic" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        <a href="https://discord.gg/teamcryptic" target="_blank" rel="noopener" aria-label="Discord">DC</a>
+      </div>
+    </div>
+    <div class="tagline">SILENCE THE DOUBT. DOMINATE THE GAME.</div>
+    <div class="foot-bottom">
+      <span>© 2026 TEAM CRYPTIC. All rights reserved.</span>
+      <span>Built for competitive Free Fire.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('apply').addEventListener('submit', function(e){
+  var msg = document.getElementById('formMsg');
+  if(this.action.includes('YOUR_FORM_ID')){
+    e.preventDefault();
+    msg.textContent = 'Connect a form service (e.g. Formspree) in the HTML to activate submissions — this demo form is not yet live.';
+    msg.style.color = '#e8303f';
+  } else {
+    msg.textContent = 'Submitting…';
+  }
+});
+</script>
+</body>
+</html>
